@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package dsa_ca1;
 
 /**
@@ -13,6 +9,8 @@ public class BicycleApp {
     /**
      * @param args the command line arguments
      */
+    // Main method where the application starts
+    // Sets the gui to be visible to be used by the user
     public static void main(String[] args) {
         BicycleGUI myGUI = new BicycleGUI();
         myGUI.setVisible(true);

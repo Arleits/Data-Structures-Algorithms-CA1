@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package dsa_ca1;
 
 /**
@@ -11,12 +7,16 @@ package dsa_ca1;
 public class BicycleGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BicycleGUI.class.getName());
+    String input;
+    int counter;
+    ListStation mySLL = new ListStation();
 
     /**
      * Creates new form BicycleGUI
      */
     public BicycleGUI() {
         initComponents();
+        counter = 1;
     }
 
     /**
@@ -28,37 +28,83 @@ public class BicycleGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        title = new javax.swing.JLabel();
+        outputDisplay = new javax.swing.JLabel();
+        displayStation = new javax.swing.JButton();
+        selectStationButton = new javax.swing.JButton();
+        addStationButton = new javax.swing.JButton();
+        removeStationButton = new javax.swing.JButton();
+        textInput = new javax.swing.JTextField();
+        selectStationButton1 = new javax.swing.JButton();
+        removeBikeButton = new javax.swing.JButton();
+        addBikeButton = new javax.swing.JButton();
+        selectStationButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(661, 493));
+        setMinimumSize(new java.awt.Dimension(661, 560));
         setPreferredSize(new java.awt.Dimension(661, 493));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        title.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        title.setText("Bicycle Station App");
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 310, 50));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 240, 290));
+        outputDisplay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(outputDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 260, 310));
 
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        displayStation.setText("Display Stations");
+        displayStation.addActionListener(this::displayStationActionPerformed);
+        getContentPane().add(displayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 120, -1));
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Bicycle Station App");
-        jScrollPane2.setViewportView(jTextArea2);
+        selectStationButton.setText("Select Station");
+        getContentPane().add(selectStationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 120, -1));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 320, 60));
+        addStationButton.setText("Add Station");
+        addStationButton.addActionListener(this::addStationButtonActionPerformed);
+        getContentPane().add(addStationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 120, -1));
+
+        removeStationButton.setText("Remove Station");
+        removeStationButton.addActionListener(this::removeStationButtonActionPerformed);
+        getContentPane().add(removeStationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 120, -1));
+
+        textInput.addActionListener(this::textInputActionPerformed);
+        getContentPane().add(textInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 340, 40));
+
+        selectStationButton1.setText("View History");
+        getContentPane().add(selectStationButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, -1));
+
+        removeBikeButton.setText("Remove Bike");
+        getContentPane().add(removeBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 120, -1));
+
+        addBikeButton.setText("Add Bike");
+        getContentPane().add(addBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 120, -1));
+
+        selectStationButton4.setText("View Details");
+        getContentPane().add(selectStationButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStationButtonActionPerformed
+        // TODO add your handling code here:
+        input = textInput.getText();
+        mySLL.add(counter, input);
+        System.out.println("added" + counter + " " + input);
+        counter ++;
+    }//GEN-LAST:event_addStationButtonActionPerformed
+
+    private void textInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textInputActionPerformed
+
+    private void removeStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStationButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeStationButtonActionPerformed
+
+    private void displayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayStationActionPerformed
+        // TODO add your handling code here:
+        outputDisplay.setText(mySLL.printList());
+    }//GEN-LAST:event_displayStationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,12 +129,39 @@ public class BicycleGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new BicycleGUI().setVisible(true));
+        /*
+        System.out.println("SLL declared and created");
+        System.out.println("***************");
+
+        //check if the list is empty
+        System.out.println("Is the list empty? " + mySLL.isEmpty());
+        System.out.println("***************");     
+        
+        //Add 4 nodes. Each node stores one String type object
+        mySLL.add(1, "Node1");
+        mySLL.add(2, "Node2");
+        mySLL.add(3, "Node3");
+        mySLL.add(2, "NodeA");
+        System.out.println("4 elements added to SLL");
+        System.out.println("***************");
+        
+        //print the size of the list
+        System.out.println("The size of list is " + mySLL.size());
+        System.out.println("***************"); 
+        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JButton addBikeButton;
+    private javax.swing.JButton addStationButton;
+    private javax.swing.JButton displayStation;
+    private javax.swing.JLabel outputDisplay;
+    private javax.swing.JButton removeBikeButton;
+    private javax.swing.JButton removeStationButton;
+    private javax.swing.JButton selectStationButton;
+    private javax.swing.JButton selectStationButton1;
+    private javax.swing.JButton selectStationButton4;
+    private javax.swing.JTextField textInput;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
