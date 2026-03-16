@@ -14,8 +14,8 @@ public class BicycleApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("hello world");
+        BicycleGUI myGUI = new BicycleGUI();
+        myGUI.setVisible(true);
     }
     
 }
