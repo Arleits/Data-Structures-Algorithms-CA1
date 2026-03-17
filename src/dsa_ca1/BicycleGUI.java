@@ -134,9 +134,9 @@ public class BicycleGUI extends javax.swing.JFrame {
     private void dummyDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummyDataActionPerformed
         // TODO add your handling code here:
         //BStation sta = new BStation(inputString);
-        mySLL.add("test");
-        mySLL.add("another");
-        mySLL.add("something");
+        mySLL.add(new BStation("test"));
+        mySLL.add(new BStation("another"));
+        mySLL.add(new BStation("something"));
     }//GEN-LAST:event_dummyDataActionPerformed
 
     /**
