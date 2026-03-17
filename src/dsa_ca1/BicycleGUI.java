@@ -57,6 +57,7 @@ public class BicycleGUI extends javax.swing.JFrame {
         getContentPane().add(displayStation, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 120, -1));
 
         selectStationButton.setText("Select Station");
+        selectStationButton.addActionListener(this::selectStationButtonActionPerformed);
         getContentPane().add(selectStationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 120, -1));
 
         addStationButton.setText("Add Station");
@@ -87,8 +88,9 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void addStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStationButtonActionPerformed
         // TODO add your handling code here:
-        inputString = textInput.getText();
-        mySLL.add(inputString);
+        inputString = textInput.getText(); // Gets input from the text field
+        BStation sta = new BStation(inputString); // Gets the BStation object class with its own queue and stack and gives it to the object variable "sta"
+        mySLL.add(sta); // The object "sta" is given to the list
         System.out.println("added " + inputString);
     }//GEN-LAST:event_addStationButtonActionPerformed
 
@@ -109,6 +111,10 @@ public class BicycleGUI extends javax.swing.JFrame {
         displayText = mySLL.printList();
         outputDisplay.setText(displayText);
     }//GEN-LAST:event_displayStationActionPerformed
+
+    private void selectStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStationButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectStationButtonActionPerformed
 
     /**
      * @param args the command line arguments

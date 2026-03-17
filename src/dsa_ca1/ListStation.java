@@ -64,10 +64,11 @@ public class ListStation {
         iSize = iSize + 1;
     }
 
+    // Gets the specific station element to be able to call the stations specific bike queue and bike stack history
     //@Override
     public Object get(int iPosition) {
         setCurrent(iPosition);
-        return currNode;
+        return currNode.getElement();
     }
 
     //@Override
