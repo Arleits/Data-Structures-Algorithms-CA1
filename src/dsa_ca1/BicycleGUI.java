@@ -7,8 +7,8 @@ package dsa_ca1;
 public class BicycleGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BicycleGUI.class.getName());
-    String input;
-    int counter;
+    String inputString, displayText;
+    int inputInt, counter;
     ListStation mySLL = new ListStation();
 
     /**
@@ -87,10 +87,9 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void addStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStationButtonActionPerformed
         // TODO add your handling code here:
-        input = textInput.getText();
-        mySLL.add(counter, input);
-        System.out.println("added" + counter + " " + input);
-        counter ++;
+        inputString = textInput.getText();
+        mySLL.add(inputString);
+        System.out.println("added " + inputString);
     }//GEN-LAST:event_addStationButtonActionPerformed
 
     private void textInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textInputActionPerformed
@@ -99,11 +98,16 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void removeStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStationButtonActionPerformed
         // TODO add your handling code here:
+        inputInt = Integer.parseInt(textInput.getText());
+        mySLL.remove(inputInt);
+        displayText = mySLL.printList();
+        outputDisplay.setText(displayText);
     }//GEN-LAST:event_removeStationButtonActionPerformed
 
     private void displayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayStationActionPerformed
         // TODO add your handling code here:
-        outputDisplay.setText(mySLL.printList());
+        displayText = mySLL.printList();
+        outputDisplay.setText(displayText);
     }//GEN-LAST:event_displayStationActionPerformed
 
     /**

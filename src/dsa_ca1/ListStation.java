@@ -10,7 +10,7 @@ public class ListStation {
     
     // Single linked list methods provided by Hamilton from moodle
     private SingleLinkedListNode head;
-    private int iSize;
+    private int iSize, counter;
     private SingleLinkedListNode currNode;
     private SingleLinkedListNode prevNode;
 
@@ -101,11 +101,13 @@ public class ListStation {
     // Creates a outputText string to store the lists contents and wraps it around in HTML to use line breaks
     //@Override
     public String printList() {
+        counter = 1;
         String outputText = "<html>";
         SingleLinkedListNode tempNode = head;
         while (tempNode != null) {
-            outputText = outputText + tempNode.toString() + "<br>";
+            outputText = outputText + counter + ": " + tempNode.toString() + "<br>";
             tempNode = tempNode.getNext();
+            counter ++;
         }
         outputText = outputText + "</html>";
         return outputText;
