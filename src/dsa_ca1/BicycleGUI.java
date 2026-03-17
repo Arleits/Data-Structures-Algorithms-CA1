@@ -38,11 +38,11 @@ public class BicycleGUI extends javax.swing.JFrame {
         addStationButton = new javax.swing.JButton();
         removeStationButton = new javax.swing.JButton();
         textInput = new javax.swing.JTextField();
-        selectStationButton1 = new javax.swing.JButton();
+        viewHistory = new javax.swing.JButton();
         removeBikeButton = new javax.swing.JButton();
         addBikeButton = new javax.swing.JButton();
         dummyData = new javax.swing.JButton();
-        selectStationButton5 = new javax.swing.JButton();
+        viewDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(661, 560));
@@ -75,21 +75,25 @@ public class BicycleGUI extends javax.swing.JFrame {
         textInput.addActionListener(this::textInputActionPerformed);
         getContentPane().add(textInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 340, 40));
 
-        selectStationButton1.setText("View History");
-        getContentPane().add(selectStationButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, -1));
+        viewHistory.setText("View History");
+        viewHistory.addActionListener(this::viewHistoryActionPerformed);
+        getContentPane().add(viewHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, -1));
 
         removeBikeButton.setText("Remove Bike");
+        removeBikeButton.addActionListener(this::removeBikeButtonActionPerformed);
         getContentPane().add(removeBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 120, -1));
 
         addBikeButton.setText("Add Bike");
+        addBikeButton.addActionListener(this::addBikeButtonActionPerformed);
         getContentPane().add(addBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 120, -1));
 
         dummyData.setText("Add dummy data");
         dummyData.addActionListener(this::dummyDataActionPerformed);
         getContentPane().add(dummyData, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
 
-        selectStationButton5.setText("View Details");
-        getContentPane().add(selectStationButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
+        viewDetails.setText("View Details");
+        viewDetails.addActionListener(this::viewDetailsActionPerformed);
+        getContentPane().add(viewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,7 +112,7 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void removeStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStationButtonActionPerformed
         // TODO add your handling code here:
-        inputInt = Integer.parseInt(textInput.getText());
+        inputInt = Integer.parseInt(textInput.getText()); // Gets
         mySLL.remove(inputInt);
         displayText = mySLL.printList();
         outputDisplay.setText(displayText);
@@ -133,11 +137,30 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void dummyDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummyDataActionPerformed
         // TODO add your handling code here:
-        //BStation sta = new BStation(inputString);
         mySLL.add(new BStation("test"));
         mySLL.add(new BStation("another"));
         mySLL.add(new BStation("something"));
     }//GEN-LAST:event_dummyDataActionPerformed
+
+    private void addBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBikeButtonActionPerformed
+        // TODO add your handling code here:
+        selectedStation.getQueue().enqueue(textInput.getText());
+        System.out.println("Enqueued: " + textInput.getText());
+    }//GEN-LAST:event_addBikeButtonActionPerformed
+
+    private void removeBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBikeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeBikeButtonActionPerformed
+
+    private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
+        // TODO add your handling code here:
+        int size = selectedStation.getQueue().size();
+        outputDisplay.setText("The stations current queue is: " + size);
+    }//GEN-LAST:event_viewDetailsActionPerformed
+
+    private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewHistoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,9 +216,9 @@ public class BicycleGUI extends javax.swing.JFrame {
     private javax.swing.JButton removeBikeButton;
     private javax.swing.JButton removeStationButton;
     private javax.swing.JButton selectStationButton;
-    private javax.swing.JButton selectStationButton1;
-    private javax.swing.JButton selectStationButton5;
     private javax.swing.JTextField textInput;
     private javax.swing.JLabel title;
+    private javax.swing.JButton viewDetails;
+    private javax.swing.JButton viewHistory;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,8 @@ package dsa_ca1;
  *
  * @author yaros
  */
+// Station object class BStation that contains data about its own queue and stack
+// This allows each station to have its own bike queue and its own history without sharing the same queue/stack with other stations
 public class BStation {
     
     private String stationName;
