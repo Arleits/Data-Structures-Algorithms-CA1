@@ -7,9 +7,12 @@ package dsa_ca1;
 public class BicycleGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BicycleGUI.class.getName());
+    
     String inputString, displayText;
     int inputInt, counter;
+    
     ListStation mySLL = new ListStation();
+    private BStation selectedStation;
 
     /**
      * Creates new form BicycleGUI
@@ -38,7 +41,8 @@ public class BicycleGUI extends javax.swing.JFrame {
         selectStationButton1 = new javax.swing.JButton();
         removeBikeButton = new javax.swing.JButton();
         addBikeButton = new javax.swing.JButton();
-        selectStationButton4 = new javax.swing.JButton();
+        dummyData = new javax.swing.JButton();
+        selectStationButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(661, 560));
@@ -80,8 +84,12 @@ public class BicycleGUI extends javax.swing.JFrame {
         addBikeButton.setText("Add Bike");
         getContentPane().add(addBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 120, -1));
 
-        selectStationButton4.setText("View Details");
-        getContentPane().add(selectStationButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
+        dummyData.setText("Add dummy data");
+        dummyData.addActionListener(this::dummyDataActionPerformed);
+        getContentPane().add(dummyData, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
+
+        selectStationButton5.setText("View Details");
+        getContentPane().add(selectStationButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,7 +122,22 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void selectStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStationButtonActionPerformed
         // TODO add your handling code here:
+        inputInt = Integer.parseInt(textInput.getText());
+        // We use a casting method here to tell java this is specifically a BStation object
+        // References: https://www.baeldung.com/java-type-casting
+        selectedStation = (BStation) mySLL.get(inputInt); 
+        System.out.println("selected: " + selectedStation);
+        displayText = inputInt + ": " + selectedStation;
+        outputDisplay.setText(displayText);
     }//GEN-LAST:event_selectStationButtonActionPerformed
+
+    private void dummyDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummyDataActionPerformed
+        // TODO add your handling code here:
+        //BStation sta = new BStation(inputString);
+        mySLL.add("test");
+        mySLL.add("another");
+        mySLL.add("something");
+    }//GEN-LAST:event_dummyDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,12 +188,13 @@ public class BicycleGUI extends javax.swing.JFrame {
     private javax.swing.JButton addBikeButton;
     private javax.swing.JButton addStationButton;
     private javax.swing.JButton displayStation;
+    private javax.swing.JButton dummyData;
     private javax.swing.JLabel outputDisplay;
     private javax.swing.JButton removeBikeButton;
     private javax.swing.JButton removeStationButton;
     private javax.swing.JButton selectStationButton;
     private javax.swing.JButton selectStationButton1;
-    private javax.swing.JButton selectStationButton4;
+    private javax.swing.JButton selectStationButton5;
     private javax.swing.JTextField textInput;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
