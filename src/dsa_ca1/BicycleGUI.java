@@ -150,6 +150,7 @@ public class BicycleGUI extends javax.swing.JFrame {
 
     private void removeBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBikeButtonActionPerformed
         // TODO add your handling code here:
+        selectedStation.getQueue().dequeue();
     }//GEN-LAST:event_removeBikeButtonActionPerformed
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
