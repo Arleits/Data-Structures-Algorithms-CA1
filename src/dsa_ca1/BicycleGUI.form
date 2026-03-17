@@ -122,14 +122,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="viewHistory">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View History"/>
+        <Property name="text" type="java.lang.String" value="View Bike History"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewHistoryActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="270" width="120" height="-1"/>
+          <AbsoluteConstraints x="480" y="270" width="140" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -174,14 +174,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="viewDetails">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View Details"/>
+        <Property name="text" type="java.lang.String" value="View Current Queue"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewDetailsActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="340" y="270" width="120" height="-1"/>
+          <AbsoluteConstraints x="320" y="270" width="140" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

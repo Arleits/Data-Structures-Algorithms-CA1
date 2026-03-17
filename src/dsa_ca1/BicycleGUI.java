@@ -9,7 +9,7 @@ public class BicycleGUI extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BicycleGUI.class.getName());
     
     String inputString, displayText;
-    int inputInt, counter;
+    int inputInt, counter, size;
     
     ListStation mySLL = new ListStation();
     private BStation selectedStation;
@@ -75,9 +75,9 @@ public class BicycleGUI extends javax.swing.JFrame {
         textInput.addActionListener(this::textInputActionPerformed);
         getContentPane().add(textInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 340, 40));
 
-        viewHistory.setText("View History");
+        viewHistory.setText("View Bike History");
         viewHistory.addActionListener(this::viewHistoryActionPerformed);
-        getContentPane().add(viewHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, -1));
+        getContentPane().add(viewHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 140, -1));
 
         removeBikeButton.setText("Remove Bike");
         removeBikeButton.addActionListener(this::removeBikeButtonActionPerformed);
@@ -91,9 +91,9 @@ public class BicycleGUI extends javax.swing.JFrame {
         dummyData.addActionListener(this::dummyDataActionPerformed);
         getContentPane().add(dummyData, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
 
-        viewDetails.setText("View Details");
+        viewDetails.setText("View Current Queue");
         viewDetails.addActionListener(this::viewDetailsActionPerformed);
-        getContentPane().add(viewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 120, -1));
+        getContentPane().add(viewDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,16 +151,19 @@ public class BicycleGUI extends javax.swing.JFrame {
     private void removeBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBikeButtonActionPerformed
         // TODO add your handling code here:
         selectedStation.getQueue().dequeue();
+        selectedStation.getStack().push(textInput.getText());
     }//GEN-LAST:event_removeBikeButtonActionPerformed
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
-        int size = selectedStation.getQueue().size();
+        size = selectedStation.getQueue().size();
         outputDisplay.setText("The stations current queue is: " + size);
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
         // TODO add your handling code here:
+        size = selectedStation.getStack().size();
+        outputDisplay.setText("This station had " + size + " bikes parked.");
     }//GEN-LAST:event_viewHistoryActionPerformed
 
     /**
