@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dsa_ca1;
 
 import java.util.ArrayList;
 
 /**
  *
- * @author yaros
- * References: Moodle notes and sample code provided by Hamilton
+ * References: Moodle notes and sample code provided by Hamilton on creating a stack
  * https://moodle2025.ncirl.ie/course/view.php?id=45
  */
-public class StackHistory {
+public class StackHistory implements StackInterface {
     private ArrayList<String> theStack;
 
     /**
@@ -24,14 +19,6 @@ public class StackHistory {
 
     public boolean isEmpty() {
         return theStack.isEmpty();
-    }
-
-    /**
-     * always false as there is no limit on the size of this ArrayList based
-     * stack
-     */
-    public boolean isFull() {
-        return false;
     }
 
     /**

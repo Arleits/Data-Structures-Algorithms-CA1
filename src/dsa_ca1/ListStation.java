@@ -2,13 +2,11 @@ package dsa_ca1;
 
 /**
  *
- * @author yaros
- * References: Moodle notes and sample code provided by Hamilton
+ * References: Moodle notes and sample code provided by Hamilton on creating a single linked list
  * https://moodle2025.ncirl.ie/course/view.php?id=45
  */
 public class ListStation {
     
-    // Single linked list methods provided by Hamilton from moodle
     private SingleLinkedListNode head;
     private int iSize, counter;
     private SingleLinkedListNode currNode;
@@ -21,7 +19,6 @@ public class ListStation {
         prevNode = null;
     }
 
-    //@Override
     public boolean isEmpty() {
         if (iSize == 0) {
             return true;
@@ -30,13 +27,11 @@ public class ListStation {
         }
     }
 
-    //@Override
     public int size() {
         return iSize;
     }
 
     //add an element to the list, assume the iPosition is in the correct range
-    //@Override
     public void add(int iPosition, Object theElement) {
         //special case of adding at the head of the list (on the first position)
         if (iPosition == 1) {
@@ -52,7 +47,6 @@ public class ListStation {
     }
 
     //add an element at the end of the list (on the last position)
-    //@Override
     public void add(Object theElement) {
         SingleLinkedListNode newNode = new SingleLinkedListNode(theElement, null);
         if (head == null) {
@@ -65,13 +59,11 @@ public class ListStation {
     }
 
     // Gets the specific station element to be able to call the stations specific bike queue and bike stack history
-    //@Override
     public Object get(int iPosition) {
         setCurrent(iPosition);
         return currNode.getElement();
     }
 
-    //@Override
     public void remove(int iPosition) {
         // special case for removing the head of the list / first node.
         if (iPosition == 1) {
@@ -100,7 +92,6 @@ public class ListStation {
     // printlist() method prints out the content of the list  
     // Modified printlist method to work with netbeans GUI elements
     // Creates a outputText string to store the lists contents and wraps it around in HTML to use line breaks
-    //@Override
     public String printList() {
         counter = 1;
         String outputText = "<html>";

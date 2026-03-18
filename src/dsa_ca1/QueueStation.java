@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author yaros
- * References: Moodle notes and sample code provided by Hamilton
+ * References: Moodle notes and sample code provided by Hamilton on creating a queue
  * https://moodle2025.ncirl.ie/course/view.php?id=45
  */
 public class QueueStation implements QueueInterface {
@@ -26,14 +25,6 @@ public class QueueStation implements QueueInterface {
 
     public int size() {
         return theQueue.size();
-    }
-
-    public Object frontElement() {
-        if (theQueue.size() > 0) {
-            return theQueue.get(0);
-        } else {
-            return null;
-        }
     }
 
     public void enqueue(Object element) {

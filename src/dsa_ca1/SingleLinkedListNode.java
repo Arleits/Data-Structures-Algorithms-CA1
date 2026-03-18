@@ -2,13 +2,11 @@ package dsa_ca1;
 
 /**
  *
- * @author yaros
- * References: Moodle notes and sample code provided by Hamilton
+ * References: Moodle notes and sample code provided by Hamilton on creating a single linked list node system
  * https://moodle2025.ncirl.ie/course/view.php?id=45
  */
 public class SingleLinkedListNode {
-    
-    // Single linked list node methods provided by Hamilton from moodle
+
     private Object element;
     private SingleLinkedListNode next;
 
