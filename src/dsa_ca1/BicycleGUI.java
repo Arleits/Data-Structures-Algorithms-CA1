@@ -10,6 +10,7 @@ public class BicycleGUI extends javax.swing.JFrame {
     
     String inputString, displayText;
     int inputInt, counter, size;
+    boolean empty;
     
     ListStation mySLL = new ListStation();
     private BStation selectedStation;
@@ -87,7 +88,7 @@ public class BicycleGUI extends javax.swing.JFrame {
         addBikeButton.addActionListener(this::addBikeButtonActionPerformed);
         getContentPane().add(addBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 120, -1));
 
-        dummyData.setText("Add dummy data");
+        dummyData.setText("Test Data");
         dummyData.addActionListener(this::dummyDataActionPerformed);
         getContentPane().add(dummyData, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 120, -1));
 
@@ -131,15 +132,17 @@ public class BicycleGUI extends javax.swing.JFrame {
         // References: https://www.baeldung.com/java-type-casting
         selectedStation = (BStation) mySLL.get(inputInt); 
         System.out.println("selected: " + selectedStation);
-        displayText = inputInt + ": " + selectedStation;
+        displayText = "<html> Parking station selected:<br>" + inputInt + ": " + selectedStation + "</html>";
         outputDisplay.setText(displayText);
     }//GEN-LAST:event_selectStationButtonActionPerformed
 
     private void dummyDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummyDataActionPerformed
-        // TODO add your handling code here:
-        mySLL.add(new BStation("test"));
-        mySLL.add(new BStation("another"));
-        mySLL.add(new BStation("something"));
+        // Sample test data to show app functionality
+        mySLL.add(new BStation("National College of Ireland"));
+        mySLL.add(new BStation("Docklands Dublin"));
+        mySLL.add(new BStation("Spencer Dock"));
+        mySLL.add(new BStation("Hanover Quay"));
+        mySLL.add(new BStation("Mayor Street Upper"));
     }//GEN-LAST:event_dummyDataActionPerformed
 
     private void addBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBikeButtonActionPerformed
@@ -155,9 +158,16 @@ public class BicycleGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_removeBikeButtonActionPerformed
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
-        // TODO add your handling code here:
-        size = selectedStation.getQueue().size();
-        outputDisplay.setText("The stations current queue is: " + size);
+        // Checks if the queue is empty
+        empty = selectedStation.getQueue().isEmpty();
+        // If not empty, tells the user the current size of the queue
+        if (empty == false) {
+            size = selectedStation.getQueue().size();
+            outputDisplay.setText("Bikes waiting for parking spot: " + size);
+        } else {
+            outputDisplay.setText("The stations queue is empty"); // Otherwise, notify the user that the queue is empty
+        }
+        
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
