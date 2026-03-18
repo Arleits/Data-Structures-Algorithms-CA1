@@ -8,12 +8,13 @@ public class BicycleGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BicycleGUI.class.getName());
     
-    String inputString, displayText;
-    int inputInt, counter, size;
-    boolean empty;
-    
+    // Variables/Objects
+    private String inputString, displayText;
+    private int inputInt, counter, size;
+    private boolean empty;
     ListStation mySLL = new ListStation();
     private BStation selectedStation;
+    private boolean isInt;
 
     /**
      * Creates new form BicycleGUI
@@ -72,8 +73,6 @@ public class BicycleGUI extends javax.swing.JFrame {
         removeStationButton.setText("Remove Station");
         removeStationButton.addActionListener(this::removeStationButtonActionPerformed);
         getContentPane().add(removeStationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 120, -1));
-
-        textInput.addActionListener(this::textInputActionPerformed);
         getContentPane().add(textInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 340, 40));
 
         viewHistory.setText("View Bike History");
@@ -84,7 +83,7 @@ public class BicycleGUI extends javax.swing.JFrame {
         removeBikeButton.addActionListener(this::removeBikeButtonActionPerformed);
         getContentPane().add(removeBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 120, -1));
 
-        addBikeButton.setText("Add Bike");
+        addBikeButton.setText("Queue Bike");
         addBikeButton.addActionListener(this::addBikeButtonActionPerformed);
         getContentPane().add(addBikeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 120, -1));
 
@@ -100,16 +99,10 @@ public class BicycleGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStationButtonActionPerformed
-        // TODO add your handling code here:
         inputString = textInput.getText(); // Gets input from the text field
-        BStation sta = new BStation(inputString); // Gets the BStation object class with its own queue and stack and gives it to the object variable "sta"
-        mySLL.add(sta); // The object "sta" is given to the list
-        System.out.println("added " + inputString);
+        BStation sta = new BStation(inputString); // Gets the BStation object class with its own queue and stack and sets it as the object variable "sta"
+        mySLL.add(sta); // The object "sta" is added to the arraylist
     }//GEN-LAST:event_addStationButtonActionPerformed
-
-    private void textInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textInputActionPerformed
 
     private void removeStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStationButtonActionPerformed
         // TODO add your handling code here:
@@ -126,14 +119,27 @@ public class BicycleGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_displayStationActionPerformed
 
     private void selectStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStationButtonActionPerformed
-        // TODO add your handling code here:
-        inputInt = Integer.parseInt(textInput.getText());
-        // We use a casting method here to tell java this is specifically a BStation object
-        // References: https://www.baeldung.com/java-type-casting
-        selectedStation = (BStation) mySLL.get(inputInt); 
-        System.out.println("selected: " + selectedStation);
-        displayText = "<html> Parking station selected:<br>" + inputInt + ": " + selectedStation + "</html>";
-        outputDisplay.setText(displayText);
+        // Takes input from user and checks if it can be turned into an integer
+        try {
+            inputInt = Integer.parseInt(textInput.getText());
+            isInt = true;
+        } catch (Exception e) {
+            isInt = false;
+        }
+        // If the input is not an integer type, prompt the user to enter a valid number
+        if (isInt == false) {
+            outputDisplay.setText("<html>Invalid or no number inputed.<br>Please use a number to select a station from the list</html>");
+        } else {
+            // Checks if the inputted integer is outside the arraylist index range
+            int listSize = mySLL.size();
+            if (inputInt > listSize || inputInt <= 0) {
+                outputDisplay.setText("<html>Invalid or no number inputed.<br>Please use a number to select a station from the list</html>");
+                return;
+            }
+            selectedStation = (BStation) mySLL.get(inputInt); 
+            displayText = "<html> Parking station selected:<br>" + inputInt + ": " + selectedStation + "</html>";
+            outputDisplay.setText(displayText);
+        }
     }//GEN-LAST:event_selectStationButtonActionPerformed
 
     private void dummyDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummyDataActionPerformed
@@ -148,7 +154,7 @@ public class BicycleGUI extends javax.swing.JFrame {
     private void addBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBikeButtonActionPerformed
         // TODO add your handling code here:
         selectedStation.getQueue().enqueue(textInput.getText());
-        System.out.println("Enqueued: " + textInput.getText());
+        System.out.println("You have enqueued a bike");
     }//GEN-LAST:event_addBikeButtonActionPerformed
 
     private void removeBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBikeButtonActionPerformed
