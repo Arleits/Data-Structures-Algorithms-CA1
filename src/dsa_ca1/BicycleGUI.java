@@ -105,15 +105,31 @@ public class BicycleGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addStationButtonActionPerformed
 
     private void removeStationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStationButtonActionPerformed
-        // TODO add your handling code here:
-        inputInt = Integer.parseInt(textInput.getText()); // Gets
-        mySLL.remove(inputInt);
-        displayText = mySLL.printList();
-        outputDisplay.setText(displayText);
+        // Takes input from user and checks if it can be turned into an integer
+        try {
+            inputInt = Integer.parseInt(textInput.getText());
+            isInt = true;
+        } catch (Exception e) {
+            isInt = false;
+        }
+        // If the input is not an integer type, prompt the user to enter a valid number
+        if (isInt == false) {
+            outputDisplay.setText("<html>Invalid or no number inputed.<br>Please use a number to select a station from the list</html>");
+        } else {
+            // Checks if the inputted integer is outside the arraylist index range
+            int listSize = mySLL.size();
+            if (inputInt > listSize || inputInt <= 0) {
+                outputDisplay.setText("<html>Invalid or no number inputed.<br>Please use a number to select a station from the list</html>");
+                return;
+            }
+            mySLL.remove(inputInt); // Removes the object from the list
+            displayText = mySLL.printList();
+            outputDisplay.setText(displayText); // Reprints the list to show updated list
+        }
     }//GEN-LAST:event_removeStationButtonActionPerformed
 
     private void displayStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayStationActionPerformed
-        // TODO add your handling code here:
+        // Displays the linked list contents
         displayText = mySLL.printList();
         outputDisplay.setText(displayText);
     }//GEN-LAST:event_displayStationActionPerformed
@@ -152,13 +168,13 @@ public class BicycleGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dummyDataActionPerformed
 
     private void addBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBikeButtonActionPerformed
-        // TODO add your handling code here:
+        // Enqueues a bike to the selected stations queue
         selectedStation.getQueue().enqueue(textInput.getText());
         System.out.println("You have enqueued a bike");
     }//GEN-LAST:event_addBikeButtonActionPerformed
 
     private void removeBikeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBikeButtonActionPerformed
-        // TODO add your handling code here:
+        // Dequeues a bike to the selected stations queue
         selectedStation.getQueue().dequeue();
         selectedStation.getStack().push(textInput.getText());
     }//GEN-LAST:event_removeBikeButtonActionPerformed
@@ -177,7 +193,7 @@ public class BicycleGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryActionPerformed
-        // TODO add your handling code here:
+        // Gets the stack size of the selected stations stack
         size = selectedStation.getStack().size();
         outputDisplay.setText("This station had " + size + " bikes parked.");
     }//GEN-LAST:event_viewHistoryActionPerformed
@@ -205,26 +221,6 @@ public class BicycleGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new BicycleGUI().setVisible(true));
-        /*
-        System.out.println("SLL declared and created");
-        System.out.println("***************");
-
-        //check if the list is empty
-        System.out.println("Is the list empty? " + mySLL.isEmpty());
-        System.out.println("***************");     
-        
-        //Add 4 nodes. Each node stores one String type object
-        mySLL.add(1, "Node1");
-        mySLL.add(2, "Node2");
-        mySLL.add(3, "Node3");
-        mySLL.add(2, "NodeA");
-        System.out.println("4 elements added to SLL");
-        System.out.println("***************");
-        
-        //print the size of the list
-        System.out.println("The size of list is " + mySLL.size());
-        System.out.println("***************"); 
-        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
